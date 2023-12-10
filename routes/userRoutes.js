@@ -4,7 +4,7 @@ const express = require("express");
 const Paket = require("../models/Paket");
 const Tiket = require("../models/Tiket");
 const router = express.Router();
-require('dotenv').config();
+require("dotenv").config();
 
 const generateRandomCode = () => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -36,11 +36,13 @@ router.post("/pesan", async (req, res) => {
       tanggal_booking,
       nama_lengkap,
       email,
-      PaketId
+      PaketId,
     });
 
     // Kirim data hasil pencarian sebagai JSON untuk redirect ke halaman hasilPencarian
-    res.status(201).send({ message: 'Pesanan berhasil', redirectTo: 'data_pesanan.html' });
+    res
+      .status(201)
+      .send({ message: "Pesanan berhasil", redirectTo: "data_pesanan.html" });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send(error.message);
@@ -66,17 +68,13 @@ router.get("/booked", async (req, res) => {
 });
 
 router.get("/paketAll", async (req, res) => {
- 
-    try {
-      const paketData = await Paket.findAll();
-      res.json(paketData);
-    } catch (error) {
-      console.error("Error:", error);
-      res.status(500).send("Internal Server Error");
-    }
-  
+  try {
+    const paketData = await Paket.findAll();
+    res.json(paketData);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
-
-
 
 module.exports = router;
