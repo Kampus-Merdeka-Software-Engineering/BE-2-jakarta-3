@@ -1,7 +1,7 @@
 // backend/config/database.js
-const { Sequelize } = require('sequelize');
-require('dotenv').config();
-// const sequelize = new Sequelize('penerbangan2', 'root', '', {
+const { Sequelize } = require("sequelize");
+require("dotenv").config();
+// const sequelize = new Sequelize('travelisip', 'root', '', {
 //   host: 'localhost',
 //   dialect: 'mysql',
 // });
@@ -17,10 +17,15 @@ require('dotenv').config();
 //   }
 // );
 
-// const sequelize = new Sequelize(process.env.DB_USERNAME, process.env.DB_PASSWORD, process.env.DB_DATABASE, "mysql", process.env.DB_PORT, process.env.DB_HOST); 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: 'mysql'
-});
+// const sequelize = new Sequelize(process.env.DB_USERNAME, process.env.DB_PASSWORD, process.env.DB_DATABASE, "mysql", process.env.DB_PORT, process.env.DB_HOST);
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: "mysql",
+  }
+);
 module.exports = sequelize;
